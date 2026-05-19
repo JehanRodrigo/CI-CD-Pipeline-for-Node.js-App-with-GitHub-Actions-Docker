@@ -94,5 +94,76 @@ To make the deployment pipeline work, you must add the following secrets in your
 
 *(Note: The EC2 secrets previously required are no longer needed since we migrated to Kubernetes/ArgoCD).*
 
+## CI/CD with EC2 (~jehanrodrigo)
+
+### Step 1: Create the instance and download the keypair .pem file.
+
+### Step 2: Create SSH to the instance
+#### Useful commands:
+   *    ```shell
+         set-location -Path "<location to the .pem file>"
+         ```
+   *    ```shell
+         ssh -i .\<keypairname(pem filename)>.pem ubuntu@<instance-public-ip>
+         ```
+      * -i: The flag telling SSH that the very next argument is your private key path.
+  
+* **Update the system**
+   *    ```shell
+         sudo apt update
+         ```
+* **Install docker**
+   *    ```shell
+         sudo apt install docker.io -y
+         ```
+   * -y : "yes"
+
+* **add your user account to the official Docker group**
+   *    ```shell
+         sudo usermod -aG docker $USER && newgrp docker
+         ```
+   * ```sudo```: Runs the command with administrator (root) privileges.
+   * ```usermod```: The system tool used to modify a user account.
+   * ```-aG```:-a means append. It adds you to a new group without removing you from your current groups.
+   * ```-G``` stands for groups. It tells the system that a group name is coming next.
+   * ```docker```: The name of the group you are being added to.
+   * ```$USER```: A system variable that automatically fills in your current logged-in username.
+
+* **To pass the configuration of extending the connection time**
+   *    ```shell
+         ssh -o "ServerAliveInterval 60" ubuntu@your-instance-ip
+         ```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ## 📝 License
 This project is open-source and available for educational purposes.
