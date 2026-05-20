@@ -139,6 +139,11 @@ To make the deployment pipeline work, you must add the following secrets in your
          sudo apt install docker-compose-v2 -y
          ```
 
+## Annex
+
+<img width="1595" height="899" alt="image" src="https://github.com/user-attachments/assets/ba42c125-eda7-4b27-b680-b5171a8775a4" />
+
+<img width="910" height="261" alt="image" src="https://github.com/user-attachments/assets/8760a823-486a-42d2-9f93-73236116ea84" />
 
 
 
