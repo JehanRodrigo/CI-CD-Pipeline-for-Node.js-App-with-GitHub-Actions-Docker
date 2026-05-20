@@ -22,10 +22,10 @@ jobs:
                 password: ${{ secrets.DOCKERHUB_TOKEN }}
 
             - name: Build Dockerfile
-              run: docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/cicd-app:${{ github.sha }} .
+              run: docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/cicd-app .
             
             - name: Push to DockerHub
-              run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/cicd-app:${{ github.sha }}
+              run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/cicd-app
 
 
     deploy-ec2:
