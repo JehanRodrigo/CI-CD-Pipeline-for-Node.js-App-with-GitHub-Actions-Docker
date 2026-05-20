@@ -1,5 +1,79 @@
 # CI-CD-Pipeline-for-Node.js-App-with-GitHub-Actions-Docker
 
+
+
+## CI/CD with EC2 (~jehanrodrigo)
+
+### Step 1: Create the instance and download the keypair .pem file.
+
+
+   *    ```shell
+         set-location -Path "<location to the .pem file>"
+         ```
+   *    ```shell
+         ssh -i .\<keypairname(pem filename)>.pem ubuntu@<instance-public-ip>
+         ```
+   * -i: The flag telling SSH that the very next argument is your private key path.
+
+### Step 3: Update the system and install docker
+* **Update the system**
+   *    ```shell
+         sudo apt update
+         ```
+* **Install docker**
+   *    ```shell
+         sudo apt install docker.io -y
+         ```
+   * -y : "yes"
+
+### Step 4: add your user account to the official Docker group
+* **add your user account to the official Docker group**
+   *    ```shell
+         sudo usermod -aG docker $USER && newgrp docker
+         ```
+   * ```sudo```: Runs the command with administrator (root) privileges.
+   * ```usermod```: The system tool used to modify a user account.
+   * ```-aG```:-a means append. It adds you to a new group without removing you from your current groups.
+   * ```-G``` stands for groups. It tells the system that a group name is coming next.
+   * ```docker```: The name of the group you are being added to.
+   * ```$USER```: A system variable that automatically fills in your current logged-in username.
+
+
+
+### Step 5: Install docker-compose
+* **Install docker-compose**
+   *    ```shell
+         sudo apt install docker-compose-v2 -y
+         ```
+
+### Step 6: To pull the latest version of the contatiner from dockerhub
+* **To pull the latest version of the contatiner from dockerhub**
+   *    ```shell
+         docker pull
+         ```
+
+### Additional commands
+* **To pass the configuration of extending the connection time**
+   *    ```shell
+         ssh -o "ServerAliveInterval 60" ubuntu@your-instance-ip
+         ```
+
+
+## Annex
+
+<img width="1595" height="899" alt="image" src="https://github.com/user-attachments/assets/ba42c125-eda7-4b27-b680-b5171a8775a4" />
+<br/>
+<hr>
+<br/>
+<img width="910" height="261" alt="image" src="https://github.com/user-attachments/assets/8760a823-486a-42d2-9f93-73236116ea84" />
+
+
+
+Refered From: [Youtube](https://www.youtube.com/watch?v=EECHnbOIVZQ)
+
+
+# Moreover ... (intergration of Kubernetes, AgroCD with GitOps CI/CD)
+
 This repository contains a simple, premium-looking Node.js application built with Express. It serves as a demonstration for implementing a complete modern CI/CD pipeline using Docker, GitHub Actions, and GitOps (ArgoCD) on a local Kubernetes (Kind) cluster.
 
 ## 🚀 Features
@@ -93,60 +167,6 @@ To make the deployment pipeline work, you must add the following secrets in your
 | `DOCKERHUB_TOKEN` | A Personal Access Token (PAT) from DockerHub. |
 
 *(Note: The EC2 secrets previously required are no longer needed since we migrated to Kubernetes/ArgoCD).*
-
-## CI/CD with EC2 (~jehanrodrigo)
-
-### Step 1: Create the instance and download the keypair .pem file.
-
-### Step 2: Create SSH to the instance
-#### Useful commands:
-   *    ```shell
-         set-location -Path "<location to the .pem file>"
-         ```
-   *    ```shell
-         ssh -i .\<keypairname(pem filename)>.pem ubuntu@<instance-public-ip>
-         ```
-      * -i: The flag telling SSH that the very next argument is your private key path.
-  
-* **Update the system**
-   *    ```shell
-         sudo apt update
-         ```
-* **Install docker**
-   *    ```shell
-         sudo apt install docker.io -y
-         ```
-   * -y : "yes"
-
-* **add your user account to the official Docker group**
-   *    ```shell
-         sudo usermod -aG docker $USER && newgrp docker
-         ```
-   * ```sudo```: Runs the command with administrator (root) privileges.
-   * ```usermod```: The system tool used to modify a user account.
-   * ```-aG```:-a means append. It adds you to a new group without removing you from your current groups.
-   * ```-G``` stands for groups. It tells the system that a group name is coming next.
-   * ```docker```: The name of the group you are being added to.
-   * ```$USER```: A system variable that automatically fills in your current logged-in username.
-
-* **To pass the configuration of extending the connection time**
-   *    ```shell
-         ssh -o "ServerAliveInterval 60" ubuntu@your-instance-ip
-         ```
-
-* **Install docker-compose**
-   *    ```shell
-         sudo apt install docker-compose-v2 -y
-         ```
-
-
-
-
-Refered From: [Youtube](https://www.youtube.com/watch?v=EECHnbOIVZQ)
-
-
-
-
 
 
 
