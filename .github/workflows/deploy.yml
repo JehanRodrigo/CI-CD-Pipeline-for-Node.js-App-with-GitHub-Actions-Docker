@@ -38,7 +38,7 @@ jobs:
               with:
                 host: ${{ secrets.EC2_HOST }}
                 username: ${{ secrets.EC2_USER }}
-                key: ${{ secrets.EEC2_SSH_PRIVATE_KEY }}
+                key: ${{ secrets.EC2_SSH_PRIVATE_KEY }}
                 script: |
                     /home/ubuntu/CI-CD-Pipeline-for-Node.js-App-with-GitHub-Actions-Docker                    
 
