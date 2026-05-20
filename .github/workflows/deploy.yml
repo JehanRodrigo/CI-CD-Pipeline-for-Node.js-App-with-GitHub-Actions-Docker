@@ -43,8 +43,7 @@ jobs:
                     /home/ubuntu/CI-CD-Pipeline-for-Node.js-App-with-GitHub-Actions-Docker                    
 
                     docker compose down
-                    docker compose pull -d --build
-                    docker compose up -d
+                    docker compose up -d --build
 
                   
     # update-manifest:
