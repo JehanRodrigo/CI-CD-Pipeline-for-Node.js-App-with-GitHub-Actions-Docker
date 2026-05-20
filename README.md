@@ -134,6 +134,14 @@ To make the deployment pipeline work, you must add the following secrets in your
          ssh -o "ServerAliveInterval 60" ubuntu@your-instance-ip
          ```
 
+* **Install docker-compose**
+   *    ```shell
+         sudo apt install docker-compose-v2 -y
+         ```
+
+
+
+
 Refered From: [Youtube](https://www.youtube.com/watch?v=EECHnbOIVZQ)
 
 
